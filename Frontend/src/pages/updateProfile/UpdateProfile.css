@@ -1,0 +1,49 @@
+.update-profile-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+  }
+  
+  .update-profile-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .updateinput-group {
+    margin-bottom: 15px;
+  }
+  
+  .updateinput-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .updatebutton {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007b7f;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .updatebutton:hover {
+    background-color: #007b7f;
+  }
+  
+  .updatemessage {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    color: #333;
+    text-align: center;
+  }
+  
