@@ -392,3 +392,8 @@ nav ul li a {
     justify-content: center;
   }
 }
+.logo-slider img {
+  max-height: 100px; /* Set the maximum height */
+  width: auto; /* Maintain aspect ratio */
+  margin: 0 auto; /* Center the images */
+}
