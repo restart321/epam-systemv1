@@ -119,7 +119,7 @@ nav ul li a {
   margin: 5px 0;
 }
 
-.buttons {
+/* .buttons {
   margin-top: 5px;
 }
 
@@ -141,8 +141,34 @@ nav ul li a {
 .events-button {
   background-color: #2f7f8e;
   color: white;
+} */
+.buttons {
+  margin-top: 5px;
 }
 
+.register-button,
+.events-button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #2f7f8e;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.register-button:hover,
+.events-button:hover {
+  background-color: #2f7f8e;
+  color: black;
+}
+
+.register-button:hover ~ .events-button,
+.events-button:hover ~ .register-button {
+  color: black;
+}
 .services-section {
   padding: 20px;
   background: #ffffff;

@@ -6,6 +6,7 @@ import { FaTelegramPlane, FaTwitter, FaLinkedin } from "react-icons/fa";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import "../style/main.css";
 
 const Main = () => {
@@ -80,7 +81,7 @@ const Main = () => {
                 <div className="video-welcome">
                     <video className="welcome-video" src={videobg} autoPlay loop muted />
                 </div>
-                <h1>Welcome to EPAMS</h1>
+                <h1>Welcome to EPAM</h1>
                 <p className="tagline">What We Serve Is What We Provide</p>
                 <div className="buttons">
                     <Link to="/signup"><button className="register-button">Register</button></Link>
@@ -168,7 +169,7 @@ const Main = () => {
                             />
                         </a>
                         <div className="footer-section">
-                            <h3>EPAMS</h3>
+                            <h3>EPAM</h3>
                             <p>• SERVE</p>
                             <p>• CONNECT </p>
                             <p>• SIMPLIFY</p>
@@ -179,10 +180,10 @@ const Main = () => {
                             <p>About Us</p>
                         </div>
                         <div className="footer-section">
-                            <h3>Contact Us</h3>
-                            <p>0911111111</p>
-                            <p>info@epams.com</p>
-                        </div>
+            <h3>Contact Us</h3>
+            <p><i className="fas fa-phone"></i> 0911111111</p>
+            <p><i className="fas fa-envelope"></i> info@epams.com</p>
+        </div>
                         <div className="social-icons">
                             <a
                                 href="https://t.me/your_telegram"
