@@ -13,11 +13,11 @@ router.post('/signin', signin);
 // @route    GET api/user/profile
 // @desc     Get user profile
 // @access   Private
-router.get('/profile',authController, getUserProfile);
+router.get('/profile', getUserProfile);
 
 // @route    PUT api/user/profile
 // @desc     Update user profile
 // @access   Private
-router.put('/Profile', authController, updateUserProfile);
+router.put('/Profile', updateUserProfile);
 
 module.exports = router;
