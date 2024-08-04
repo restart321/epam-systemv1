@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-
 import { Link } from 'react-router-dom';
-import ProfileIcon from '../assets/icons/profile.svg';
-import DashboardIcon from '../assets/icons/dashboard.svg';
-import PurchaseIcon from '../assets/icons/purchase.svg';
-import ReportIcon from '../assets/icons/report.svg';
-import EventImage from '../assets/events.jpg';
-import bellIcon from '../assets/icons/bell.svg';
-import '../style/Dashboardcopy.css';
+import ProfileIcon from '../../assets/icons/profile.svg';
+import DashboardIcon from '../../assets/icons/dashboard.svg';
+import PurchaseIcon from '../../assets/icons/purchase.svg';
+import ReportIcon from '../../assets/icons/report.svg';
+import EventImage from '../../assets//events.jpg';
+import bellIcon from '../../assets/icons/bell.svg';
+import '../../style/Dashboardcopy.css';
 
 const Dashboard = () => {
   const [showMessage, setShowMessage] = useState(false);

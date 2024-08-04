@@ -1,62 +1,3 @@
-// // src/components/SignIn.js
-
-// import React, { useState } from "react";
-// import signinImage from "../assets/Signup.jpg";
-// import "../style/Signin.css";
-// import { Link } from "react-router-dom";
-
-// const SignIn = () => {
-//   const [userType, setUserType] = useState("attendee");
-//   return (
-//     <div className="signin-container">
-//       <div className="form-container">
-//         <div className="header">
-//           <div className="logo">EPAMS
-//             <Link to="/">  <img src="logo.png" alt="EPAMS Logo" /></Link>
-//           </div>
-//           <div className="nav">
-//             <a href="#" className="signup-link active">
-//               <Link to="/signup">Sign up</Link>
-//             </a>
-//             <a href="#" className="signin-link">
-//               Sign in
-//             </a>
-//           </div>
-//         </div>
-//         <h1>Sign In</h1>
-//         <div className="user-type">
-//           <button
-//             className={userType === "attendee" ? "active" : ""}
-//             onClick={() => setUserType("attendee")}
-//           >
-//             ATTENDEE
-//           </button>
-//           <button
-//             className={userType === "vendor" ? "active" : ""}
-//             onClick={() => setUserType("vendor")}
-//           >
-//             VENDOR
-//           </button>
-//         </div>
-//         <form>
-//           <div className="input-group">
-//             <input type="email" placeholder="Email" />
-//           </div>
-//           <div className="input-group">
-//             <input type="password" placeholder="Password" />
-//           </div>
-//           <Link to="/forgot-password" className="forgot-password-link">Forgot Password?</Link>
-//           <Link to="/Dashboard"> <button type="submit">Log in</button></Link>
-//         </form>
-//       </div>
-//       <div className="image-container">
-//         <img src={signinImage} alt="signin" />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SignIn;
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import signinImage from '../assets/Signup.jpg';
@@ -96,8 +37,12 @@ const SignIn = () => {
         setMessage('Login successful');
         setShowMessage(true);
         setTimeout(() => {
-          navigate('/Dashboard'); // Adjust the path to your dashboard
-        }, 1000); // 2-second delay before navigating to dashboard
+          if (userType === 'ATTENDEE') {
+            navigate('/Dashboard'); // Adjust the path to your attendee dashboard
+          } else if (userType === 'VENDOR') {
+            navigate('/DashboardVendor'); // Adjust the path to your vendor dashboard
+          }
+        }, 1000); // 1-second delay before navigating to the dashboard
       } else {
         setMessage(data.msg);
         setShowMessage(true);

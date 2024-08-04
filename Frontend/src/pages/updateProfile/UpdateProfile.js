@@ -1,5 +1,5 @@
-import React, { useState, useEffect  } from 'react';
-import { useNavigate ,Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import './UpdateProfile.css';
 
 const UpdateProfile = () => {
@@ -11,6 +11,7 @@ const UpdateProfile = () => {
     password: '',
     confirmPassword: '',
   });
+  const [role, setRole] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
@@ -34,6 +35,7 @@ const UpdateProfile = () => {
         password: '',
         confirmPassword: '',
       });
+      setRole(data.role); // Assuming the role is part of the user data
     };
     fetchUserData();
   }, []);
@@ -52,8 +54,8 @@ const UpdateProfile = () => {
     }
 
     const updatedUser = { fullName, email, phone, company, password };
-
     const token = localStorage.getItem('token');
+
     try {
       const res = await fetch('http://localhost:5000/api/user/Profile', {
         method: 'PUT',
@@ -65,24 +67,31 @@ const UpdateProfile = () => {
       });
 
       const data = await res.json();
+      console.log(data); // Debugging statement
 
       if (res.status === 200) {
         setMessage('Profile updated successfully');
         setTimeout(() => {
-          navigate('/Dashboard');
-        }, 2000);
+          if (role === 'ATTENDEE') {
+            navigate('/Dashboard'); // Adjust the path to your attendee dashboard
+          } else if (role === 'VENDOR') {
+            navigate('/DashboardVendor'); // Adjust the path to your vendor dashboard
+          }
+        }, 2000); // 2-second delay before navigating to the dashboard
       } else {
         setMessage(data.msg);
       }
     } catch (err) {
       console.error(err.message);
-      setMessage('Server error');
+      setMessage('Front error');
     }
   };
 
   return (
     <div className="update-profile-container">
-    <Link to="/Dashboard"> <img src="logo.png" alt="EPAMS Logo" /></Link> 
+      <Link to={role === 'ATTENDEE' ? '/Dashboard' : '/DashboardVendor'}>
+        <img src="logo.png" alt="EPAMS Logo" />
+      </Link>
       <h1>Update Profile</h1>
       <form onSubmit={onSubmit}>
         <div className="updateinput-group">

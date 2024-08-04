@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import ProfileIcon from '../assets/icons/profile.svg';
-import DashboardIcon from '../assets/icons/dashboard.svg';
-import PurchaseIcon from '../assets/icons/purchase.svg';
-import ReportIcon from '../assets/icons/report.svg';
-import EventImage from '../assets/events.jpg';
-import bellIcon from '../assets/icons/bell.svg';
-import '../style/Dashboardcopycopy.css';
+import ProfileIcon from '../../assets/icons/profile.svg';
+import DashboardIcon from '../../assets/icons/dashboard.svg';
+import PurchaseIcon from '../../assets/icons/purchase.svg';
+import ReportIcon from '../../assets/icons/report.svg';
+import EventImage from '../../assets/events.jpg';
+import bellIcon from '../../assets/icons/bell.svg';
+import '../../style/Dashboard.css';
+
 const Dashboard = () => {
   const [showMessage, setShowMessage] = useState(false);
+  const [userData, setUserData] = useState({});
   const notificationRef = useRef(null);
 
   const handleClickOutside = (event) => {
@@ -22,6 +24,23 @@ const Dashboard = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
+  }, []);
+
+  useEffect(() => {
+    // Fetch user data
+    const fetchUserData = async () => {
+      const token = localStorage.getItem('token');
+      const res = await fetch('http://localhost:5000/api/user/profile', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
+      });
+      const data = await res.json();
+      setUserData(data);
+    };
+    fetchUserData();
   }, []);
 
   return (
@@ -48,7 +67,7 @@ const Dashboard = () => {
                 <p>new notifications!</p>
               </div>
             )}
-            <img src={ProfileIcon} alt="Profile" />
+            <Link to="/UpdateProfile"><img src={ProfileIcon} alt="Profile" /> Profile</Link>
           </div>
         </div>
       </div>
@@ -57,39 +76,41 @@ const Dashboard = () => {
           <div className="profile-icon">
             <img src={ProfileIcon} alt="Profile" />
           </div>
-          <div className="profile-name">Hello Ayi</div>
+          <div className="profile-name">Hello {userData.fullName}</div>
         </div>
         <div className="sidebar-icons">
           <div className="sidebar-icon">
-            <Link to="/Dashboard" ><img src={DashboardIcon} alt="Dashboard" /></Link>
+            <img src={DashboardIcon} alt="Dashboard" />
             <span>Dashboard</span>
           </div>
           <div className="sidebar-icon">
-           
-          <Link to="/mypurchase">  <img src={PurchaseIcon} alt="My Purchase" /></Link>
-              <span>My Purchase</span>
-            
+            <Link to="/mypurchase"><img src={PurchaseIcon} alt="My Purchase" /></Link>
+            <span>My Purchase</span>
           </div>
           <div className="sidebar-icon">
-           <img src={ReportIcon} alt="Reports/Feedback" />
+            <Link to="/ReportDashboard"><img src={ReportIcon} alt="Reports/Feedback" /></Link>
             <span>Reports/Feedback</span>
           </div>
         </div>
       </div>
       <div className="main-section">
         <div className="new-event-button">
-          <button>NEW</button><p>Attend the brand new surprising event of 2016 EC</p>
+          <button>NEW</button><p>Attend the brand new surprising event of 2016 EC
+          </p>        
         </div>
-        <div className="report-dashboard-container">
-        <form className="report-form">
-        <input type="text" placeholder="Enter Your Field" className="report-input" />
-        <textarea placeholder="Enter Your Feedback" className="report-textarea"></textarea>
-        <div className="report-buttons">
-          <button type="submit" className="submit-button">Submit</button>
-          <button type="button" className="generate-report-button">Generate Report</button>
+        <div className="event-cards">
+          {[...Array(5)].map((_, index) => (
+            <div key={index} className="event-card">
+              <img src={EventImage} alt="Event" />
+              <div className="event-details">
+                <p className="event-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p className="event-location">Location: Local Air</p>
+                <p className="event-price">200 Birr</p>
+                <Link to="/MyPurchase"><button className="buy-ticket-button">Buy Ticket</button></Link>
+              </div>
+            </div>
+          ))}
         </div>
-      </form>
-    </div>
       </div>
     </div>
   );
