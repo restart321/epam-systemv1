@@ -92,23 +92,27 @@ const Main = () => {
                 <div className="services-container">
                     <div className="service-card">
                         <img src="Service1.jpg" alt="Service 1" />
+                    
+                        <p class="circular-text">Exhibitions</p>
                         <button className="see-more-btn">See More</button>
-                        <p>Exhibitions</p>
                     </div>
                     <div className="service-card">
                         <img src="Service2.jpg" alt="Service 2" />
+                      
+                        <p class="circular-text">Corporate events</p>
                         <button className="see-more-btn">See More</button>
-                        <p>Corporate events</p>
                     </div>
                     <div className="service-card">
                         <img src="Service3.jpg" alt="Service 3" />
+                       
+                        <p class="circular-text">Technology events</p>
                         <button className="see-more-btn">See More</button>
-                        <p>Technology events</p>
                     </div>
                     <div className="service-card">
                         <img src="Service4.jpg" alt="Service 4" />
+                      
+                        <p class="circular-text">Social events</p>
                         <button className="see-more-btn">See More</button>
-                        <p>Social events</p>
                     </div>
                 </div>
             </section>
@@ -137,6 +141,9 @@ const Main = () => {
                     <div className="about-logo">
                         <img src="logo.png" alt="EPAMS Logo" />
                     </div>
+                    {/* <div className="wave-container">
+                            <img src="wave.png" alt="Wave Motion" className="wave-image" />
+        </div> */}
                 </div>
                 <div className="logo-slider">
                     <Slider {...logoSettings}>
