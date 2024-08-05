@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ProfileIcon from '../../assets/icons/profile.svg';
 import DashboardIcon from '../../assets/icons/dashboard.svg';
 import PurchaseIcon from '../../assets/icons/purchase.svg';
@@ -10,12 +10,19 @@ import '../../style/Dashboard.css';
 
 const Dashboard = () => {
   const [showMessage, setShowMessage] = useState(false);
+  const [showProfileOptions, setShowProfileOptions] = useState(false);
+  const [activeComponent, setActiveComponent] = useState('dashboard');
   const [userData, setUserData] = useState({});
   const notificationRef = useRef(null);
+  const profileRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleClickOutside = (event) => {
     if (notificationRef.current && !notificationRef.current.contains(event.target)) {
       setShowMessage(false);
+    }
+    if (profileRef.current && !profileRef.current.contains(event.target)) {
+      setShowProfileOptions(false);
     }
   };
 
@@ -43,19 +50,96 @@ const Dashboard = () => {
     fetchUserData();
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/');
+  };
+
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case 'dashboard':
+        return (
+          <div className="main-section">
+            <div className="new-event-button">
+              <button>NEW</button>
+              <p>Attend the brand new surprising event of 2016 EC</p>
+            </div>
+            <div className="event-cards">
+              {[...Array(3)].map((_, index) => (
+                <div key={index} className="event-card">
+                  <img src={EventImage} alt="Event" />
+                  <div className="event-details">
+                    <p className="event-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p className="event-location">Location: Local Air</p>
+                    <p className="event-price">200 Birr</p>
+                    <button className="buy-ticket-button">Buy Ticket</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      case 'mypurchase':
+        return (
+          <div className="main-section">
+            <div className="new-event-button">
+              <button>NEW</button>
+              <p>Attend the brand new surprising event of 2016 EC</p>
+            </div>
+            <div className="event-cardspay">
+              <div className="event-cardpay">
+                <img src={EventImage} alt="Event" />
+                <div className="event-detailspay">
+                  <p className="event-descriptionpay">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <p className="event-locationpay">Location: Local Air</p>
+                  <p className="event-pricepay">200 Birr</p>
+                  <button className="buy-ticket-buttonpay">Buy Booth</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      case 'report':
+        return (
+          <div className="main-section">
+            <div className="new-event-button">
+              <button>NEW</button>
+              <p>Attend the brand new surprising event of 2016 EC</p>
+            </div>
+            <div className="report-dashboard-container">
+              <form className="report-form">
+                <input type="text" placeholder="Enter Your Field" className="report-input" />
+                <textarea placeholder="Enter Your Feedback" className="report-textarea"></textarea>
+                <div className="report-buttons">
+                  <button type="submit" className="submit-button">Submit</button>
+                  <button type="button" className="generate-report-button">Generate Report</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="dashboard-container">
       <div className="navigation-section">
         <div className="navigation-bar">
           <div className="logo">
             <span>EPAMS</span>
-            <Link to="/"> <img src="logo.png" alt="EPAMS Logo" /></Link>
+            <Link to="/">
+              <img src="logo.png" alt="EPAMS Logo" />
+            </Link>
           </div>
           <div className="search-bar">
             <input type="text" placeholder="Search Events" />
           </div>
           <div className="nav-links">
-            <Link to="/"> <span>About us</span></Link>
+            <Link to="/">
+              <span>About us</span>
+            </Link>
             <img
               src={bellIcon}
               alt="Notifications"
@@ -63,11 +147,24 @@ const Dashboard = () => {
               onClick={() => setShowMessage(!showMessage)}
             />
             {showMessage && (
-              <div className="mini-message">
+              <div className="mini-message" ref={notificationRef}>
                 <p>new notifications!</p>
               </div>
             )}
-            <Link to="/UpdateProfile"><img src={ProfileIcon} alt="Profile" /> Profile</Link>
+            <div className="profile-container" ref={profileRef}>
+              <img
+                src={ProfileIcon}
+                alt="Profile"
+                className="profile-icon"
+                onClick={() => setShowProfileOptions(!showProfileOptions)}
+              />
+              {showProfileOptions && (
+                <div className="profile-options">
+                  <Link to="/UpdateProfile">Update Profile</Link>
+                  <button onClick={handleLogout}>Logout</button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -79,39 +176,21 @@ const Dashboard = () => {
           <div className="profile-name">Hello {userData.fullName}</div>
         </div>
         <div className="sidebar-icons">
-          <div className="sidebar-icon">
+          <div className="sidebar-icon" onClick={() => setActiveComponent('dashboard')}>
             <img src={DashboardIcon} alt="Dashboard" />
             <span>Dashboard</span>
           </div>
-          <div className="sidebar-icon">
-            <Link to="/mypurchase"><img src={PurchaseIcon} alt="My Purchase" /></Link>
+          <div className="sidebar-icon" onClick={() => setActiveComponent('mypurchase')}>
+            <img src={PurchaseIcon} alt="My Purchase" />
             <span>My Purchase</span>
           </div>
-          <div className="sidebar-icon">
-            <Link to="/ReportDashboard"><img src={ReportIcon} alt="Reports/Feedback" /></Link>
+          <div className="sidebar-icon" onClick={() => setActiveComponent('report')}>
+            <img src={ReportIcon} alt="Reports/Feedback" />
             <span>Reports/Feedback</span>
           </div>
         </div>
       </div>
-      <div className="main-section">
-        <div className="new-event-button">
-          <button>NEW</button><p>Attend the brand new surprising event of 2016 EC
-          </p>        
-        </div>
-        <div className="event-cards">
-          {[...Array(5)].map((_, index) => (
-            <div key={index} className="event-card">
-              <img src={EventImage} alt="Event" />
-              <div className="event-details">
-                <p className="event-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p className="event-location">Location: Local Air</p>
-                <p className="event-price">200 Birr</p>
-                <Link to="/MyPurchase"><button className="buy-ticket-button">Buy Ticket</button></Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      {renderComponent()}
     </div>
   );
 };
