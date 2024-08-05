@@ -93,7 +93,7 @@ const Main = () => {
                     <div className="service-card">
                         <img src="Service1.jpg" alt="Service 1" />
                         <button className="see-more-btn">See More</button>
-                        <p>Corporate events</p>
+                        <p>Exhibitions</p>
                     </div>
                     <div className="service-card">
                         <img src="Service2.jpg" alt="Service 2" />
@@ -103,12 +103,12 @@ const Main = () => {
                     <div className="service-card">
                         <img src="Service3.jpg" alt="Service 3" />
                         <button className="see-more-btn">See More</button>
-                        <p>Corporate events</p>
+                        <p>Technology events</p>
                     </div>
                     <div className="service-card">
                         <img src="Service4.jpg" alt="Service 4" />
                         <button className="see-more-btn">See More</button>
-                        <p>Corporate events</p>
+                        <p>Social events</p>
                     </div>
                 </div>
             </section>
@@ -186,7 +186,7 @@ const Main = () => {
         </div>
                         <div className="social-icons">
                             <a
-                                href="https://t.me/your_telegram"
+                                href="https://t.me/epam_systems7"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
