@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ProfileIcon from '../../assets/icons/profile.svg';
 import DashboardIcon from '../../assets/icons/dashboard.svg';
 import PurchaseIcon from '../../assets/icons/purchase.svg';
@@ -10,19 +10,13 @@ import '../../style/Dashboard.css';
 
 const Dashboard = () => {
   const [showMessage, setShowMessage] = useState(false);
-  const [showProfileOptions, setShowProfileOptions] = useState(false);
   const [activeComponent, setActiveComponent] = useState('dashboard');
   const [userData, setUserData] = useState({});
   const notificationRef = useRef(null);
-  const profileRef = useRef(null);
-  const navigate = useNavigate();
 
   const handleClickOutside = (event) => {
     if (notificationRef.current && !notificationRef.current.contains(event.target)) {
       setShowMessage(false);
-    }
-    if (profileRef.current && !profileRef.current.contains(event.target)) {
-      setShowProfileOptions(false);
     }
   };
 
@@ -50,11 +44,6 @@ const Dashboard = () => {
     fetchUserData();
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/');
-  };
-
   const renderComponent = () => {
     switch (activeComponent) {
       case 'dashboard':
@@ -72,7 +61,8 @@ const Dashboard = () => {
                     <p className="event-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     <p className="event-location">Location: Local Air</p>
                     <p className="event-price">200 Birr</p>
-                    <button className="buy-ticket-button">Buy Ticket</button>
+                      <button className="buy-ticket-button">Buy Ticket</button>
+                   
                   </div>
                 </div>
               ))}
@@ -147,24 +137,13 @@ const Dashboard = () => {
               onClick={() => setShowMessage(!showMessage)}
             />
             {showMessage && (
-              <div className="mini-message" ref={notificationRef}>
+              <div className="mini-message">
                 <p>new notifications!</p>
               </div>
             )}
-            <div className="profile-container" ref={profileRef}>
-              <img
-                src={ProfileIcon}
-                alt="Profile"
-                className="profile-icon"
-                onClick={() => setShowProfileOptions(!showProfileOptions)}
-              />
-              {showProfileOptions && (
-                <div className="profile-options">
-                  <Link to="/UpdateProfile">Update Profile</Link>
-                  <button onClick={handleLogout}>Logout</button>
-                </div>
-              )}
-            </div>
+            <Link to="/UpdateProfile">
+              <img src={ProfileIcon} alt="Profile" /> Profile
+            </Link>
           </div>
         </div>
       </div>
