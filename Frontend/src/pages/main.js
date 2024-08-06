@@ -141,9 +141,6 @@ const Main = () => {
                     <div className="about-logo">
                         <img src="logo.png" alt="EPAMS Logo" />
                     </div>
-                    {/* <div className="wave-container">
-                            <img src="wave.png" alt="Wave Motion" className="wave-image" />
-        </div> */}
                 </div>
                 <div className="logo-slider">
                     <Slider {...logoSettings}>

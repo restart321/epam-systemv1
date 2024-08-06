@@ -1,0 +1,33 @@
+/* src/components/Navbar/Navbar.css */
+.navbar {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position:re;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.search-bar input {
+    width: 800px;
+    /* padding: 5px 5px; */
+    
+    border-radius: 1px;
+}
+
+.profile .notification-icon {
+    font-size: 20px;
+}

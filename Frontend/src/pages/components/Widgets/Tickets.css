@@ -1,0 +1,18 @@
+/* src/components/Widgets/AssignedRisks.css */
+.assigned-risks {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.assigned-risks h3 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 18px;
+}
+
+.assigned-risks p {
+    color: #888;
+    font-size: 14px;
+}

@@ -7,6 +7,9 @@ import SignIn from './pages/SignIn';
 import Dashboard from './pages/AttendeDashboard/Dashboard';
 import UpdateProfile from './pages/updateProfile/UpdateProfile';
 import DashboardVendor from './pages/VendorDashboard/DashboardVendor';
+import Dashboardo from './pages/components/Dashboard/Dashboardo';
+
+
 function App() {
   return (
     <div className="App">
@@ -18,7 +21,7 @@ function App() {
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Updateprofile" element={<UpdateProfile />} />
           <Route path="/DashboardVendor" element={<DashboardVendor />} />
-          
+          <Route path="/Dashboardo" element={<Dashboardo />} />
         </Routes>
       </Router>
     </div>
