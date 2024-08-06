@@ -53,7 +53,7 @@ const Main = () => {
             <header className="main-header">
                 <div className="logo">
                     <span>EPAMS</span>
-                    <img src="logo.png" alt="EPAMS Logo" />
+                    <img src="logo.svg" alt="EPAMS Logo" />
                 </div>
                 <nav>
                     <ul className="nav-links">

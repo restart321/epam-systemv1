@@ -7,7 +7,7 @@ import SignIn from './pages/SignIn';
 import Dashboard from './pages/AttendeDashboard/Dashboard';
 import UpdateProfile from './pages/updateProfile/UpdateProfile';
 import DashboardVendor from './pages/VendorDashboard/DashboardVendor';
-import Dashboardo from './pages/components/Dashboard/Dashboardo';
+import Dashboardo from './pages/OrganizerDashboard/Dashboard/Dashboardo';
 
 
 function App() {

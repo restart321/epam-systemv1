@@ -26,12 +26,13 @@
 }
 
 .logo {
-  display: flex;
+  display:contents;
   align-items: center;
 }
 .logo img {
-  width: 40px;
-  height: 40px;
+  width: 10px;
+  height: 10px;
+  margin-top: 10px;
 }
 nav ul {
   list-style-type: none;
