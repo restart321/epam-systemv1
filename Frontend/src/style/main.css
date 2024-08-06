@@ -161,7 +161,6 @@ nav ul li a {
   text-align: center;
   background-color: #cfffff;
   border-radius: 50px;
-  /* padding: 10px 10px; */
  font-size: 1.5em;
  padding: 5px;
   text-transform: capitalize;
@@ -251,11 +250,7 @@ nav ul li a {
   text-align: left;
   font-size: 18px;
 }
-/* .wave-image {
-  width: 100%;
-  height: auto;
-  filter: hue-rotate(160deg) brightness(1.2) 
-} */
+
 .footer {
   width: 100%;
   background-color: #ffffff;
@@ -279,7 +274,9 @@ nav ul li a {
 .footer-section h3 {
   margin-bottom: 10px;
 }
-
+.footer-section a{
+  color: #007b7f;
+}
 .footer-section li{
   margin: 5px 0;
   flex-direction: column;

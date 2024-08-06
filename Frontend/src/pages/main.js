@@ -51,9 +51,9 @@ const Main = () => {
     return (
         <div className="main-container">
             <header className="main-header">
-                <div className="logo">
+                <div className="logoo">
                     <span>EPAMS</span>
-                    <img src="logo.svg" alt="EPAMS Logo" />
+                    <img src="logo.png" alt="EPAMS Logo" />
                 </div>
                 <nav>
                     <ul className="nav-links">
@@ -179,7 +179,7 @@ const Main = () => {
                             <p>• SIMPLIFY</p>
                         </div>
                         <div className="footer-section">
-                            <a href="#"><h3>Home</h3></a>
+                            <a  href="#"><h3>Home</h3></a>
                             <p>Services</p>
                             <p>About Us</p>
                         </div>

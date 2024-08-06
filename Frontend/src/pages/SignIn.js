@@ -61,7 +61,7 @@ const SignIn = () => {
           <div className="logo">
             EPAMS
             <Link to="/">
-              <img src="logo.png" alt="EPAMS Logo" />
+              <img src="logo.svg" alt="EPAMS Logo" />
             </Link>
           </div>
           <div className="nav">
